@@ -1,0 +1,36 @@
+services:
+-  type: web
+   name: have-i-fed-the-cat-app
+   env: node
+   region: frankfurt
+   plan: free
+   buildCommand: npm ci
+   startCommand: node index.js
+   enVars:
+   - key: DB_NAME
+     fromDatabase:
+        name: have-i-fed-the-cat-app_db
+         property: database
+    - key: DB_USER
+      fromDatabase:
+          name: have-i-fed-the-cat-app_db
+          property: user
+    - key: DB_PASSWORD
+      fromDatabase:
+        name: have-i-fed-the-cat-app_db
+        property: password
+    - key: DB_HOST
+      fromDatabase:
+        name: have-i-fed-the-cat-app_db
+        property: host
+    - key: DB_PORT
+    fromDatabase:
+      name: have-i-fed-the-cat-app_db
+      property: port
+
+databases:
+  - name: have-i-fed-the-cat-app_db
+    plan: free
+    region: frankfurt
+    databaseName: have-i-fed-the-cat-app
+    ipAllowList: [] 
