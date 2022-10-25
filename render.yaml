@@ -27,3 +27,10 @@ services:
         fromDatabase:
           name: cat_app_database
           property: port
+
+databases:
+  - name: cat_app_database
+    plan: free
+    region: frankfurt
+    databaseName: cats
+    ipAllowList: [] 
